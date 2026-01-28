@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>He-Yox Oyunu</title>
+<style>
+    body {
+        background: #0f0f0f;
+        color: white;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 100px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 15px 40px;
+        margin: 20px;
+        font-size: 20px;
+        background: crimson;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+</style>
+</head>
+<body>
+
+<h1>Kusmusuz mennen prensesim?</h1>
+
+<button id="he">He</button>
+<button id="yox">Yox</button>
+
+<script>
+    let heBtn = document.getElementById('he');
+    let yoxBtn = document.getElementById('yox');
+
+    const heOriginal = 20; // başlanğıc ölçü
+    const yoxOriginal = 20;
+
+    let heSize = heOriginal;
+    let yoxSize = yoxOriginal;
+
+    let clickCount = 0;
+
+    heBtn.style.fontSize = heSize + "px";
+    yoxBtn.style.fontSize = yoxSize + "px";
+
+    heBtn.onclick = function() {
+        clickCount++;
+        if (clickCount === 1) {
+            heSize = heOriginal * 0.75;
+            yoxSize = yoxOriginal * 1.5;
+        } else if (clickCount === 2) {
+            heSize = heOriginal * 0.5;
+            yoxSize = yoxOriginal * 2.5;
+        } else if (clickCount >= 3) {
+            heBtn.style.display = "none"; // 3-cü klikdə He yox olur
+        }
+
+        heBtn.style.fontSize = heSize + "px";
+        yoxBtn.style.fontSize = yoxSize + "px";
+    }
+
+    yoxBtn.onclick = function() {
+        // Yox-a basanda səhifə yenilənir və mesaj çıxır
+        document.body.innerHTML = "<h1>Səni çox sevirem, aşkım 💖</h1>";
+        document.body.style.fontSize = "30px";
+    }
+</script>
+
+</body>
+</html>
